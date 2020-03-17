@@ -551,12 +551,6 @@
 				<TranslationTemplate language="en" name="TR.manual.missingInspireStoredQuery">Check manually that the provided StoredQuery is sufficiently described with the included parameters.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
-
-		<LangTranslationTemplateCollection name="TR.manual.unexpectedCRS">
-			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.manual.unexpectedCRS">Check manually that the CRS is the same as the one in the request</TranslationTemplate>
-			</translationTemplates>
-		</LangTranslationTemplateCollection>
         
         <LangTranslationTemplateCollection name="TR.manual.GetSpatialDataSetIdentifier">
 			<translationTemplates>
