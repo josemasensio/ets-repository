@@ -849,11 +849,14 @@ let $messages :=
 							else ()
 				
 				return
-					if(count($validAccessConstraints) = 1 and (count($validAnchor) = 1 or (not(count($x/gmd:otherConstraints/gco:CharacterString) = 0) and not(string-length($x/gmd:otherConstraints/gco:CharacterString) = 0)))) then $x
-					else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 or (not(count($x/gmd:otherConstraints/gco:CharacterString) = 0) and not(string-length($x/gmd:otherConstraints/gco:CharacterString) = 0)))) then $x
-					else if(count($validAccessConstraints) = 1 and ((not(count($x/gmd:otherConstraints/gco:CharacterString) = 0) and not(string-length($x/gmd:otherConstraints/gco:CharacterString) = 0)) or (string-length($x/gmd:otherConstraints/gmx:Anchor) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
-					else if(count($validUseConstraints) = 1 and ((not(count($x/gmd:otherConstraints/gco:CharacterString) = 0) and not(string-length($x/gmd:otherConstraints/gco:CharacterString) = 0)) or (string-length($x/gmd:otherConstraints/gmx:Anchor) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
-					else ()
+					for $oc in $x/gmd:otherConstraints
+						return
+							if(count($validAccessConstraints) = 1 and (count($validAnchor) = 1 or (not(count($oc/gco:CharacterString) = 0) and not(string-length($oc/gco:CharacterString) = 0)))) then $oc
+							else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 or (not(count($oc/gco:CharacterString) = 0) and not(string-length($oc/gco:CharacterString) = 0)))) then $oc
+							else if(count($validAccessConstraints) = 1 and ((not(count($oc/gco:CharacterString) = 0) and not(string-length($oc/gco:CharacterString) = 0)) or (string-length($oc/gmx:Anchor) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $oc
+							else if(count($validUseConstraints) = 1 and ((not(count($oc/gco:CharacterString) = 0) and not(string-length($oc/gco:CharacterString) = 0)) or (string-length($oc/gmx:Anchor) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $oc
+							else ()
+					
 		return 
 			if(count($md_legalConstraints_Conditions) = 0) then
 				local:addMessage('TR.noResourceConditions', map { 'filename': local:filename($record), 'id': $rid })
