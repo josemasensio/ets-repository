@@ -844,11 +844,11 @@ let $messages :=
 						for $y in $otherConstraints/gmx:Anchor
 							where (starts-with($y/@xlink:href, 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse') or starts-with($y/@xlink:href, 'https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse'))
 								return
-								if (not($y/@xlink:href = "http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply") and
-									not($y/@xlink:href = "http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown") and
-									not($y/@xlink:href = "https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply") and
-									not($y/@xlink:href = "https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown")) then $y 
-								else ()
+									(if (not($y/@xlink:href = "http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply") and
+										not($y/@xlink:href = "http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown") and
+										not($y/@xlink:href = "https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply") and
+										not($y/@xlink:href = "https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown")) then $y 
+									else ())
 						return $otherConstraints
 				
 				return
