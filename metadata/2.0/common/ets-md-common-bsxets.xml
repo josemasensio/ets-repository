@@ -691,7 +691,7 @@ let $messages :=
 				let $otherConstraintsAnchor := 
 					for $oc in $x/gmd:otherConstraints
 						return 
-							if (exist($oc/gmx:Anchor)) then $oc
+							if (exists($oc/gmx:Anchor)) then $oc
 							else ()
 				let $validAnchor :=
 					for $y in $otherConstraintsAnchor
@@ -763,7 +763,7 @@ let $messages :=
 						let $otherConstraintsAnchor := 
 							for $oc in $x/gmd:otherConstraints
 								return 
-									if (exist($oc/gmx:Anchor)) then $oc
+									if (exists($oc/gmx:Anchor)) then $oc
 									else ()
 						let $validAnchor :=
 							for $y in $otherConstraintsAnchor
@@ -810,7 +810,7 @@ let $messages :=
 				let $otherConstraintsAnchor := 
 					for $oc in $x/gmd:otherConstraints
 						return 
-							if (exist($oc/gmx:Anchor)) then $oc
+							if (exists($oc/gmx:Anchor)) then $oc
 							else ()
 				let $validAnchor :=
 					for $y in $otherConstraintsAnchor
