@@ -690,9 +690,8 @@ let $messages :=
 						return $ac
 				let $otherConstraintsAnchor := 
 					for $oc in $x/gmd:otherConstraints
-						return 
-							if (exists($oc/gmx:Anchor)) then $oc
-							else ()
+						where (exists($oc/gmx:Anchor)) 
+						return $oc
 				let $validAnchor :=
 					for $y in $otherConstraintsAnchor
 						where ($y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1a' or
@@ -762,9 +761,8 @@ let $messages :=
 								return $ac
 						let $otherConstraintsAnchor := 
 							for $oc in $x/gmd:otherConstraints
-								return 
-									if (exists($oc/gmx:Anchor)) then $oc
-									else ()
+								where (exists($oc/gmx:Anchor)) 
+								return $oc
 						let $validAnchor :=
 							for $y in $otherConstraintsAnchor
 								where ($y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1a' or
@@ -809,9 +807,8 @@ let $messages :=
 						return $uc
 				let $otherConstraintsAnchor := 
 					for $oc in $x/gmd:otherConstraints
-						return 
-							if (exists($oc/gmx:Anchor)) then $oc
-							else ()
+						where (exists($oc/gmx:Anchor))
+						return $oc
 				let $validAnchor :=
 					for $y in $otherConstraintsAnchor
 						where ($y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply' or
