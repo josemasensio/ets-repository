@@ -714,7 +714,7 @@ let $messages :=
 						
 				let $invalidAnchor :=
 					for $otherConstraints in $x/gmd:otherConstraints
-						$y in $otherConstraints/gmx:Anchor
+						for $y in $otherConstraints/gmx:Anchor
 							where ($y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply' or
 								$y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown' or
 								$y/@xlink:href = 'https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply' or
@@ -785,14 +785,14 @@ let $messages :=
 									return $y
 								return $otherConstraints
 						let $invalidAnchor :=
-						for $otherConstraints in $x/gmd:otherConstraints
-							for $y in $otherConstraints/gmx:Anchor
-								where ($y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply' or
-									$y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown' or
-									$y/@xlink:href = 'https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply' or
-									$y/@xlink:href = 'https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown')
-								return $y
-							return $otherConstraints
+							for $otherConstraints in $x/gmd:otherConstraints
+								for $y in $otherConstraints/gmx:Anchor
+									where ($y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply' or
+										$y/@xlink:href = 'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown' or
+										$y/@xlink:href = 'https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply' or
+										$y/@xlink:href = 'https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown')
+									return $y
+								return $otherConstraints
 						return
 							if(count($validAnchor) >= 1 and count($validAccessConstraints) = 1) then $x
 							else ()
