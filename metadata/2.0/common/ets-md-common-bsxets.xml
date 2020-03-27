@@ -864,12 +864,11 @@ let $messages :=
 				<!--  -->
 				return
 					if((count($validAnchor) = 1 and (not(count($validCharacterString) = 0))) then $x
-					else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 and (not(count($validCharacterString) = 0)))) then $x
-					else if(count($validAccessConstraints) = 1 and (not(count($validCharacterString) = 0) or (count($validAnchorText) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $oc
-					else if(count($validUseConstraints) = 1 and ((not(count($validCharacterString) = 0)) or (count($validAnchorText) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $oc
+					else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 or not(count($validCharacterString) = 0))) then $x
+					else if(count($validAccessConstraints) = 1 and not(count($validCharacterString) = 0) or ((count($validAnchorText) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
+					else if(count($validUseConstraints) = 1 and not(count($validCharacterString) = 0) or ((count($validAnchorText) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
 					else ()
 				
-					
 		return 
 			if(count($md_legalConstraints_Conditions) = 0) then
 				local:addMessage('TR.noResourceConditions', map { 'filename': local:filename($record), 'id': $rid })
