@@ -863,9 +863,9 @@ let $messages :=
 
 				<!--  -->
 				return
-					if((count($validAnchor) = 1 and (not(count($validCharacterString) = 0))) then $x
-					else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 or not(count($validCharacterString) = 0))) then $x
+					if(count($validAccessConstraints) = 1 and (count($validAnchor) = 1 and (not(count($validCharacterString) = 0))) then $x
 					else if(count($validAccessConstraints) = 1 and (not(count($validCharacterString) = 0) or (not(count($validAnchorText) = 0) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
+					else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 or not(count($validCharacterString) = 0))) then $x
 					else if(count($validUseConstraints) = 1 and (not(count($validCharacterString) = 0) or (not(count($validAnchorText) = 0) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
 					else ()
 				
