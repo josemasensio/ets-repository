@@ -847,25 +847,28 @@ let $messages :=
                                 not($y/@xlink:href = "https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply") and
                                 not($y/@xlink:href = "https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown")) then $y 
 							else ()
-				let $CharacterString := 
+
+
+
+				<!-- validar cada caso que haya en el $x -->
+				let $validCharacterString := 
 					for $oc in $x/gmd:otherConstraints/gco:CharacterString
+						where (not(string-length($oc) = 0))
 						return $oc
 
-				let $CharacterStringFilled :=
-					for $oc in $x/gmd:otherConstraints/gco:CharacterString
-						where (not(string-length($oc/gco:CharacterString) = 0))
-							return $oc
-			
-				let $AnchorFilled :=
+				let $validAnchorText :=
 					for $oc in $x/gmd:otherConstraints/gmx:Anchor
-						where (not(string-length($oc/gmx:Anchor) = 0))
-							return $oc
+						where (not(string-length($oc) = 0))
+							return $oc			
+
+				<!--  -->
 				return
-					if(count($validAccessConstraints) = 1 and (count($validAnchor) = 1 or (not(count($CharacterString)) = 0) and not(count($CharacterStringFilled)) = 0)))) then $x
-					else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 or (not(count($CharacterString) = 0) and not(count($CharacterStringFilled)) = 0)))) then $x
-					else if(count($validAccessConstraints) = 1 and ((not(count($CharacterString) = 0) and not(count($CharacterStringFilled)) = 0)) or (count($AnchorFilled) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
-					else if(count($validUseConstraints) = 1 and ((not(count($CharacterString) = 0) and not(count($CharacterStringFilled)) = 0)) or (count($AnchorFilled) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $x
+					if((count($validAnchor) = 1 and (not(count($validCharacterString) = 0))) then $x
+					else if(count($validUseConstraints) = 1 and (count($validAnchor) = 1 and (not(count($validCharacterString) = 0)))) then $x
+					else if(count($validAccessConstraints) = 1 and (not(count($validCharacterString) = 0) or (count($validAnchorText) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $oc
+					else if(count($validUseConstraints) = 1 and ((not(count($validCharacterString) = 0)) or (count($validAnchorText) and count($wrongAnchor) = 0 and count($limitationAnchor) = 0))) then $oc
 					else ()
+				
 					
 		return 
 			if(count($md_legalConstraints_Conditions) = 0) then
