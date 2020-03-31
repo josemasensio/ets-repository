@@ -753,8 +753,6 @@ let $messages :=
 		return
 			if (count($md_legalConstraints_Limitations) = 0) then
 				local:addMessage('TR.noResourceLimitations', map { 'filename': local:filename($record), 'id': $rid })
-			else if (not(count($invalidLimitationsAnchor) = 0)) then
-				local:addMessage('TR.invalidAnchorExist', map { 'filename': local:filename($record), 'id': $rid, 'url': 'http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess' })
 			else if (count($md_legalConstraints_Limitations) != 1) then
 				local:addMessage('TR.noValidResourceLimitations', map { 'filename': local:filename($record), 'id': $rid })
 			else ()
@@ -904,8 +902,6 @@ let $messages :=
 		return 
 			if(count($md_legalConstraints_Conditions) = 0) then
 				local:addMessage('TR.noResourceConditions', map { 'filename': local:filename($record), 'id': $rid })
-			else if(not(count($invalidConditionsAnchor) = 0)) then
-				local:addMessage('TR.invalidAnchor', map { 'filename': local:filename($record), 'id': $rid, 'url':'http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse'})
 			else if (count($md_legalConstraints_Conditions) != 1) then
 				if (not(count($md_legalConstraints_Limitations) = 0 and count($md_legalConstraints_Conditions) = 2)) then 
 					local:addMessage('TR.noValidResourceConditions', map { 'filename': local:filename($record), 'id': $rid })

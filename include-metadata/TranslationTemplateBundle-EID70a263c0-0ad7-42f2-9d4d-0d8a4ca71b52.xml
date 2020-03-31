@@ -1609,15 +1609,6 @@ If no limitations apply, the gmd:otherConstraints shall include a gmx:Anchor ele
 		 </translationTemplates>
 	  </LangTranslationTemplateCollection>
 
-	   <LangTranslationTemplateCollection name="TR.invalidAnchorExist">
-		 <translationTemplates>
-		    <TranslationTemplate language="en" name="TR.invalidAnchorExist">
-			XML document '{filename}', record '{id}': Invalid Anchor xlink:href. Please check if xlink:href attribute is a URL starting with '{url}' and postfixed with one of values of code list of the TG MD.
-			</TranslationTemplate>
-		 </translationTemplates>
-	  </LangTranslationTemplateCollection>
-
-
 	  <LangTranslationTemplateCollection name="TR.noValidResourceConditions">
 		 <translationTemplates>
 		    <TranslationTemplate language="en" name="TR.noValidResourceConditions">
