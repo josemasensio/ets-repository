@@ -5248,7 +5248,9 @@ for( crs in supportedCrs ) {
 			ph.setTransferProperty("language", language)
 			ph.setTransferProperty("dataSetIdCode", dataSetIdCode)
 			ph.setTransferProperty("dataSetIdNamespace", spatialDataSetIdentifierNamespaces[i])
-   			ph.gotoStepByName("Invoke Stored Query with CRS, Language, SpatialDataSetIdentifier")
+   		ph.runTestStep("Invoke Stored Query with CRS, Language, SpatialDataSetIdentifier")
+         log.info(testRunner.getStatus());
+
 		}
 	}
 }
