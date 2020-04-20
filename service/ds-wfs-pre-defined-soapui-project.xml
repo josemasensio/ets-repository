@@ -5252,7 +5252,7 @@ for( crs in supportedCrs ) {
          try{
    		ph.runTestStep("Invoke Stored Query with CRS, Language, SpatialDataSetIdentifier")
          }catch (Exception e){
-             testRunner.status == Status.PASSED;
+             testRunner.status == Status.OK;
          }
 		}
 	}
