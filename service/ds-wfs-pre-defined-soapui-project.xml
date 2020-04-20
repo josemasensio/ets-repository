@@ -5250,8 +5250,9 @@ for( crs in supportedCrs ) {
 			ph.setTransferProperty("dataSetIdCode", dataSetIdCode)
 			ph.setTransferProperty("dataSetIdNamespace", spatialDataSetIdentifierNamespaces[i])
    		ph.runTestStep("Invoke Stored Query with CRS, Language, SpatialDataSetIdentifier")
-         if(testRunner.getStatus() == "FAILED")
-         testRunner.status == Status.PASSED
+         if(testRunner.getStatus() == "FAILED"){
+           testRunner.status == Status.PASSED
+         }
 		}
 	}
 }
