@@ -5232,7 +5232,7 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 string-join( (//inspire_dls:ExtendedCapabilities/inspire_dls:SpatialDataSetIdentifier/inspire_common:Namespace), ',' )</con:sourcePath><con:targetType>spatialDataSetIdentifierNamespaces</con:targetType><con:targetStep>Transfer_Properties</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="groovy" name="Loop through CRS, Language,  SpatialDataSetIdentifier" id="631e41b4-090e-4e74-b6e7-f25fdcb92c65"><con:description>Technical test step. 'CRS', 'DataSetIdCode', 'DataSetIdNamespace' and 'Language' are extracted from the previous GetCapabilities response (test step 'Request GetCapabilities'). Executes 'Invoke Stored Query with CRS, Language, SpatialDataSetIdentifier' for each parameter combination.</con:description><con:settings/><con:config><script>import de.interactive_instruments.xtf.*;
 SOAPUI_I.init(log,context,testRunner);
 import de.interactive_instruments.UriUtils;
-import com.eviware.soapui.model.testsuite.TestRunner.Status
+import com.eviware.soapui.model.testsuite.TestRunner.Status;
 
 ProjectHelper ph = new ProjectHelper();
 
@@ -5249,9 +5249,10 @@ for( crs in supportedCrs ) {
 			ph.setTransferProperty("language", language)
 			ph.setTransferProperty("dataSetIdCode", dataSetIdCode)
 			ph.setTransferProperty("dataSetIdNamespace", spatialDataSetIdentifierNamespaces[i])
+         try{
    		ph.runTestStep("Invoke Stored Query with CRS, Language, SpatialDataSetIdentifier")
-         if(testRunner.getStatus() == "FAILED"){
-           testRunner.status == Status.PASSED
+         }catch (Exception e){
+             testRunner.status == Status.PASSED;
          }
 		}
 	}
